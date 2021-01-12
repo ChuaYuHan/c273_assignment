@@ -1,0 +1,152 @@
+<!-- Yuhan 19020844 -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Sign Up</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/all.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/jquery-ui.min.css"> 
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery-3.5.1.min.js" type="text/javascript"></script>
+        <script src="js/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                
+                $("#idDOB").datepicker({minDate: -29200, maxDate: '+0D', dateFormat: 'dd/mm/yy'});
+
+                $("form").validate({
+                    rules: {
+                        username: {
+                            required: true,
+                            pattern: /^[a-zA-Z0-9_.]{5,20}$/
+                        },
+                        password: {
+                            required: true,
+                            pattern: /^[0-9a-zA-Z]{5,20}$/
+                        },
+                        height: {
+                            required: true,
+                        },
+                        weight: {
+                            required: true,
+                        },
+                        dob: {
+                            required: true,
+                        },
+                        activeLevel: {
+                            required: true,
+                        }
+                    },
+                    messages: {
+                        username: {
+                            required: "Please enter a username",
+                            pattern: "Name must contain at least 5 characters and consist of alphabetical, number, dot or underscore"
+                        },
+                        password: {
+                            required: "Please enter a password",
+                            pattern: "Name must contain at least 5 characters and consist of alphabetical, number"
+                        },
+                        height: {
+                            required: "Please enter a height",
+                        },
+                        weight: {
+                            required: "Please enter a weight",
+                            pattern: "Comments must be less than 200 characters"
+                        },
+                        dob: {
+                            required: "Please enter a date"
+                        },
+                        activeLevel: {
+                            required: "Please choose an active level",
+                        }
+                    },
+                    submitHandler: function () {
+                        return true;
+                    }
+                });
+
+                $("#form").submit(function () {
+                    var name = $("#idUsername").val();
+                    var pw = $("#idPassword").val();
+                    var height = $("#idHeight").val();
+                    var weight = $("#idWeight").val();
+                    var dob = $("#idDOB").val();
+                    var al = $("#idActiveLevel").val();
+                
+                    return false;
+                }); 
+            });
+        </script>
+        <style>
+            form .error {
+
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class='container'>
+                <img src="image/ych-logo.png" alt="" height="50"/>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link" href="Login.html">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="bg-light">
+            <div class="container">
+                <h1>Sign Up</h1>
+                <form id="form" method="post" action="doSignUp.php">
+                    <div class="form-group">
+                        <label for="idUsername"/>Username:</label>
+                        <input type="text" class="form-control" id="idUsername" name="username"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="idPassword"/>Password:</label>
+                        <input type="text" class="form-control" id="idPassword" name="password"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="idHeight"/>Height (in m):</label>
+                        <input type="text" class="form-control" id="idHeight" name="height"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="idWeight"/>Weight (in kg):</label>
+                        <input type="text" class="form-control" id="idWeight" name="weight"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="idDOB"/>Date of Birth:</label>
+                        <input type="text" class="form-control" id="idDOB" name="dob"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="idActiveLevel"/>Active Level:</label><br/>
+                        <input type="radio" class="form-group" id="idActiveLevel" name="activeLevel" value="Sedentary">Sedentary
+                        <input type="radio" class="form-group" id="idActiveLevel" name="activeLevel" value="Moderate">Moderate
+                        <input type="radio" class="form-group" id="idActiveLevel" name="activeLevel" value="Active">Active
+                    </div>
+
+                    <input class="btn btn-primary" type="submit" value="Sign Up" />
+                </form>
+                <br/>
+            </div>
+        </div>
+    </body>
+</html>
+
+<!-- Yuhan 19020844 -->
